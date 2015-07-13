@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane prefHeight="34.0" prefWidth="145.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.FleetCellController">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="145.0" />
+   </columnConstraints>
+   <children>
+      <HBox prefHeight="17.0" prefWidth="95.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <children>
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+            <Rectangle fx:id="rectangle3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+            <Rectangle fx:id="rectangle4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+            <Rectangle fx:id="rectangle5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+         </children>
+      </HBox>
+      <BorderPane prefHeight="17.0" prefWidth="95.0">
+         <center>
+            <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-text" text="Text" BorderPane.alignment="CENTER_LEFT" />
+         </center>
+      </BorderPane>
+   </children>
+</GridPane>

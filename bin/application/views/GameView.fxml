@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.GameController">
+   <children>
+      <VBox fx:id="root" prefHeight="900.0" prefWidth="1600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <BorderPane fx:id="fieldContainer" prefHeight="600.0" prefWidth="1600.0" style="-fx-background-color: red;">
+               <left>
+                  <HBox fx:id="leftContainer" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="leftListContainer" prefHeight="600.0" prefWidth="150.0">
+                           <children>
+                              <fx:include fx:id="fleet1" source="ListView.fxml" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="leftFieldContainer" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: yellow;">
+                        <children>
+                              <fx:include fx:id="field1" source="FieldView.fxml" />
+                           </children></AnchorPane>
+                     </children>
+                  </HBox>
+               </left>
+               <right>
+                  <HBox fx:id="rightContainer" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="rightFieldContainer" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: orange;">
+                        <children>
+                              <fx:include fx:id="field2" source="FieldView.fxml" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="rightListContainer" prefHeight="600.0" prefWidth="150.0">
+                        <children>
+                        <fx:include fx:id="fleet2" source="ListView.fxml" />
+                        </children>
+                        </AnchorPane> 
+                     </children>
+                  </HBox>
+               </right>
+            </BorderPane>
+            <BorderPane fx:id="chatContainer" prefHeight="300.0" prefWidth="1600.0" style="-fx-background-color: blue;">
+               <left>
+                  <BorderPane fx:id="leftChatContainer" prefHeight="280.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TextArea fx:id="leftTextArea" prefHeight="180.0" prefWidth="750.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <GridPane fx:id="leftInfoPanel" prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </top>
+                     <bottom>
+                        <GridPane fx:id="leftButtonPanel" prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </bottom>
+                  </BorderPane>
+               </left>
+               <right>
+                  <BorderPane fx:id="rightChatContainer" prefHeight="280.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TextArea fx:id="rightTextArea" prefHeight="180.0" prefWidth="750.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <GridPane fx:id="rightInfoPanel" prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </top>
+                     <bottom>
+                        <GridPane fx:id="rightButtonPanel" prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" percentHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </bottom>
+                  </BorderPane>
+               </right></BorderPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

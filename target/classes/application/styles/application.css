@@ -1,0 +1,185 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+    -fx-background-color: #545454;
+}
+.text-field {
+		-fx-background-color: darkslategrey;
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-border-radius: 5 5 5 5;
+  	-fx-background-radius: 5 5 5 5;
+}
+.text-field .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-field .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-field .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text-area {
+	-fx-background-color: darkslategrey;
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-border-radius: 5 5 5 5;
+  	-fx-background-radius: 5 5 5 5;
+}
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text {
+	-fx-font: 18px "Copperplate Gothic Light";
+	-fx-fill: white;
+	-fx-font-smoothing-type: lcd;
+}
+.name-text {
+	-fx-font: 12px "Copperplate Gothic Light";
+	-fx-fill: white;
+	-fx-font-smoothing-type: lcd;
+}
+.field-text {
+	-fx-font: 18px "Copperplate Gothic Light";
+	-fx-fill: white;
+	-fx-font-smoothing-type: lcd;	
+}
+.field-text-container {
+	-fx-background-color: darkslategray ;
+	
+}
+.field-text-container-top-left {
+	-fx-background-color: darkslategray ;
+	-fx-border-radius: 0 5 0 0;
+  	-fx-background-radius: 0 5 0 0;
+	
+}
+.field-text-container-top-right {
+	-fx-background-color: darkslategray ;
+	-fx-border-radius: 5 0 0 0;
+  	-fx-background-radius: 5 0 0 0;
+	
+}
+.left-side1 {
+	-fx-effect: dropshadow(three-pass-box, pink, 2, 1.0, 0, 3);
+}
+.right-side1 {
+	-fx-effect: dropshadow(three-pass-box, pink, 2, 1.0, 0, 3);
+}
+.left-test {
+	-fx-background-color: darkslategrey ;
+	-fx-border-color: black;
+	-fx-border-width: 0 2 2 2;
+	-fx-border-radius: 0 0 15 5;
+  	-fx-background-radius: 0 0 15 5;
+	
+}
+.right-test {
+	-fx-background-color: darkslategrey ;
+	-fx-border-color: black;
+	-fx-border-width: 0 2 2 2;
+	-fx-border-radius: 0 0 5 15;
+  	-fx-background-radius: 0 0 5 15;
+	
+}
+.field-left {
+	-fx-border-color: black;
+	-fx-border-width: 2 2 2 0;
+	-fx-border-radius: 0 5 5 0;
+  	-fx-background-radius: 0 5 5 0;
+}
+.field-right {
+	-fx-border-color: black;
+	-fx-border-width: 2 0 2 2;
+	-fx-border-radius: 5 0 0 5;
+  	-fx-background-radius: 5 0 0 5;
+}
+.field-seperator-left {
+	-fx-border-color: black;
+	-fx-border-width: 0 0 0 0;
+}
+.field-seperator-right {
+	-fx-border-color: black;
+	-fx-border-width: 0 0 0 0;
+}
+.list-text {
+	-fx-font: 12px "Copperplate Gothic Light";
+	-fx-fill: white;
+	-fx-font-smoothing-type: gray;
+}
+.list-view .scroll-bar:vertical .increment-arrow,
+.list-view .scroll-bar:vertical .decrement-arrow,
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
+    -fx-padding:0;
+}
+.list-view-left {
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-background-color: darkslategrey ;
+	-fx-border-radius: 5 0 0 0;
+  	-fx-background-radius: 5 0 0 0;
+}
+.list-view-right {
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-background-color: darkslategrey ;
+	-fx-border-radius: 0 5 0 0;
+  	-fx-background-radius: 0 5 0 0;
+}
+.list-cell {
+  	-fx-background-radius: 5 5 5 5;
+  	-fx-background-color: transparent;
+}
+.list-cell:empty {
+    -fx-padding: 2px ;
+    -fx-background-color: transparent ;
+    -fx-background-insets: 0 ;
+}
+.list-cell:even {
+	-fx-background-color: transparent;
+}
+.list-cell:odd {
+	-fx-background-color: transparent;
+}
+.list-cell:selected {
+	-fx-background-color: dodgerblue;
+}
+.button {
+	-fx-font: 18px "Copperplate Gothic Light";
+	-fx-base: #545454;
+	-fx-text-fill: #FFFFFF;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+    -fx-padding: 3 6 6 6;
+}
+.button:focused {
+	-fx-focus-color: darkgrey;
+	-fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.rectangle {
+	-fx-arc-height: 5.0;
+	-fx-arc-width: 5.0;
+	-fx-fill: dodgerblue;
+	-fx-stroke: black;
+	-fx-stroke-type: inside;
+}
+#menuText {
+	-fx-font: 69px "Copperplate Gothic Bold";
+	-fx-fill: white;
+	-fx-font-smoothing-type: gray;
+	-fx-stroke: black;
+	-fx-stroke-width: 2;
+}

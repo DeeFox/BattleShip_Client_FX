@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="9.0" minWidth="7.0" prefHeight="900.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="9.0" minWidth="7.0" prefHeight="900.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../res/ships_r1_c3.png" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>
