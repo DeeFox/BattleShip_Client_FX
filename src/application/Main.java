@@ -32,7 +32,7 @@ public class Main extends Application {
             con.setParent(this);
 
             scene = new Scene(root, 1600, 900);
-            //scene.getStylesheets().add(getClass().getResource("/application/styles/application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/application/styles/application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("BattleShipFX");
             primaryStage.setOnCloseRequest(e -> Platform.exit());

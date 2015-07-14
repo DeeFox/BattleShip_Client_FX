@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: DODGERBLUE;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.FieldCellController">
+<StackPane prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: darkslategray" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.FieldCellController">
    <children>
       <ImageView fx:id="shipImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="false">
          <image>
-            <Image url="ships_r4_c2.png" />
+            <Image url="stripes.png" />
          </image>
       </ImageView>
       <Circle fx:id="hitMarker" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE" />

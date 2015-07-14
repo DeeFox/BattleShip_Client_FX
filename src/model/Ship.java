@@ -144,27 +144,27 @@ public class Ship extends Observable {
 	public Image getImage(int i) {
 	    switch(i) {
 	    case 0:
-	        if(hits[i]) {
+	        if(this.isDestroyed()) {
 	            return imageRes.get(-1);
 	        }
 	        return imageRes.get(1);
 	    case 1:
-	        if(hits[i]) {
+	        if(this.isDestroyed()) {
                 return imageRes.get(-2);
             }
             return imageRes.get(2);
 	    case 2:
-	        if(hits[i]) {
+	        if(this.isDestroyed()) {
                 return imageRes.get(-3);
             }
             return imageRes.get(3);
 	    case 3:
-	        if(hits[i]) {
+	        if(this.isDestroyed()) {
                 return imageRes.get(-4);
             }
             return imageRes.get(4);
 	    case 4:
-	        if(hits[i]) {
+	        if(this.isDestroyed()) {
                 return imageRes.get(-5);
             }
             return imageRes.get(5);
@@ -182,6 +182,8 @@ public class Ship extends Observable {
                 hits[i] = true;
             }
         }
+        this.setChanged();
+        this.notifyObservers(this);
     }
 	
 	public void damageAt(int i) {

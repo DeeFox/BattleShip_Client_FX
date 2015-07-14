@@ -12,9 +12,9 @@
    <children>
       <VBox fx:id="root" prefHeight="900.0" prefWidth="1600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <BorderPane fx:id="fieldContainer" prefHeight="600.0" prefWidth="1600.0" style="-fx-background-color: red;">
+            <BorderPane fx:id="fieldContainer" prefHeight="600.0" prefWidth="1600.0" style="-fx-background-color: transparent;">
                <left>
-                  <HBox fx:id="leftContainer" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: pink;" BorderPane.alignment="CENTER">
+                  <HBox fx:id="leftContainer" prefHeight="600.0" prefWidth="750.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane fx:id="leftListContainer" prefHeight="600.0" prefWidth="150.0">
                            <children>
@@ -43,7 +43,7 @@
                   </HBox>
                </right>
             </BorderPane>
-            <BorderPane fx:id="chatContainer" prefHeight="300.0" prefWidth="1600.0" style="-fx-background-color: blue;">
+            <BorderPane fx:id="chatContainer" prefHeight="300.0" prefWidth="1600.0">
                <left>
                   <BorderPane fx:id="leftChatContainer" prefHeight="280.0" prefWidth="750.0" BorderPane.alignment="CENTER">
                      <center>

@@ -61,6 +61,8 @@ public class FieldController implements Controller<GameController>, Observer {
                     pane.prefHeightProperty().bind(anchor.heightProperty().multiply(0.10));
                     cellss[j][i] = cell;
                     cells.add(cell);
+                    pane.getStyleClass().add("gridBorder");
+                    
                     grid.add(pane, i, j);
                     GridPane.setHalignment(pane, HPos.CENTER);
                     GridPane.setValignment(pane, VPos.CENTER);
