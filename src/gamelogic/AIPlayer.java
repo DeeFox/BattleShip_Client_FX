@@ -15,6 +15,8 @@ import model.Ship.Orientation;
 public class AIPlayer extends Player {
 
     private Random rnd = new Random();
+    
+    private final boolean DEBUG = true;
 
     // AI vars
     private String mode = "search";
@@ -27,6 +29,8 @@ public class AIPlayer extends Player {
     private boolean[][] tries;
     private boolean[][] hits;
     private boolean[][] fires;
+    private boolean[][] destroyedShips;
+    private ArrayList<Point> currentShip;
     private boolean hardMode = true;
 
     public AIPlayer() {
@@ -35,14 +39,21 @@ public class AIPlayer extends Player {
         this.tries = new boolean[10][10];
         this.hits = new boolean[10][10];
         this.fires = new boolean[10][10];
+        this.destroyedShips = new boolean[10][10];
+        this.currentShip = new ArrayList<Point>();
     }
 
     private boolean alreadyTriedOnAdjascent(Point p) {
-        Point[] pts = new Point[4];
+        Point[] pts = new Point[8];
         pts[0] = new Point(p.getX(), p.getY() - 1);
         pts[1] = new Point(p.getX() - 1, p.getY());
         pts[2] = new Point(p.getX() + 1, p.getY());
         pts[3] = new Point(p.getX(), p.getY() + 1);
+        pts[4] = new Point(p.getX() - 1, p.getY() - 1);
+        pts[5] = new Point(p.getX() + 1, p.getY() - 1);
+        pts[6] = new Point(p.getX() - 1, p.getY() + 1);
+        pts[7] = new Point(p.getX() + 1, p.getY() + 1);
+
 
         for (Point pt : pts) {
             if (Field.isValidPoint(pt)) {
@@ -58,6 +69,7 @@ public class AIPlayer extends Player {
     }
 
     private Point calcBetterSearchCoord() {
+        debug("Searching better search coord");
         boolean validCoord = false;
         Point tmp = new Point(-1, -1);
         while (!validCoord) {
@@ -65,11 +77,20 @@ public class AIPlayer extends Player {
             int tx = ty % 2;
             tx += (rnd.nextInt(5) * 2);
             tmp = new Point(ty, tx);
-            if (!alreadyFiredHere(tmp) && !alreadyTriedOnAdjascent(tmp) && Field.isValidPoint(tmp))
+            if (!alreadyFiredHere(tmp) && !isCellExcluded(tmp) && Field.isValidPoint(tmp))
                 validCoord = true;
+            
+            debug("Trying " + ty + "," + tx + " isValid: " + validCoord);
         }
         this.tries[tmp.getX()][tmp.getY()] = true;
+        debug("Result: " + tmp.getX() + ", " + tmp.getY());
         return tmp;
+    }
+
+    private void debug(String string) {
+        if(DEBUG) {
+            System.out.println("++ " + string);
+        }
     }
 
     private Point calcTurnCoord() {
@@ -94,32 +115,67 @@ public class AIPlayer extends Player {
             tries.add(new Point(lh.getX() - 1, lh.getY()));
             tries.add(new Point(lh.getX(), lh.getY() + 1));
             tries.add(new Point(lh.getX() + 1, lh.getY()));
-
+            
+            debug("Searching 2nd field. Trying:");
             ArrayList<Point> newTries = new ArrayList<Point>(tries);
             for (Point tr : tries) {
-                if (!Field.isValidPoint(tr) || alreadyFiredHere(tr)) {
+                debug("Field " + tr.toBSString() + ": isValid:" + Field.isValidPoint(tr));
+                if(Field.isValidPoint(tr)) {
+                    debug("alreadyFiredHere: " + alreadyFiredHere(tr) + ", isExcluded: " + isCellExcluded(tr));
+                }
+                if (!Field.isValidPoint(tr) || alreadyFiredHere(tr) || isCellExcluded(tr)) {
                     newTries.remove(tr);
+                    debug("-> This try is out.");
                 }
             }
             tries = newTries;
-
+            
+            debug("Result: " + tries.toString());
             int size = tries.size();
             int pos = rnd.nextInt(size);
-            return tries.get(pos);
+            Point theTry = tries.get(pos);
+            debug("We choose: " + theTry.toBSString());
+            return theTry;
         } else if (mode.equals("destroy")) {
             Point target = new Point(this.lastCoord.getX() + this.destroyDirX, this.lastCoord.getY() + this.destroyDirY);
-            if (!Field.isValidPoint(target) || !this.wasLastHit || alreadyFiredHere(target)) {
+            debug("Destroying Ship!");
+            debug("Field " + target.toBSString() + ": isValid:" + Field.isValidPoint(target));
+            if(Field.isValidPoint(target)) {
+                debug("lastHit: " + this.wasLastHit + ", alreadyFiredHere: " + alreadyFiredHere(target) + ", isExcluded: " + isCellExcluded(target));
+            }
+            if (!Field.isValidPoint(target) || !this.wasLastHit || alreadyFiredHere(target) || isCellExcluded(target)) {
                 this.destroyDirX = this.destroyDirX * -1;
                 this.destroyDirY = this.destroyDirY * -1;
                 this.lastCoord = this.firstHitCoord;
-
+                
                 target = new Point(this.lastCoord.getX() + this.destroyDirX, this.lastCoord.getY() + this.destroyDirY);
+                debug("The Target is " + target.toBSString());
             }
             return target;
         }
         return null;
     }
 
+
+    private boolean isCellExcluded(Point p) {
+        Point[] pts = new Point[8];
+        pts[0] = new Point(p.getX(), p.getY() - 1);
+        pts[1] = new Point(p.getX() - 1, p.getY());
+        pts[2] = new Point(p.getX() + 1, p.getY());
+        pts[3] = new Point(p.getX(), p.getY() + 1);
+        pts[4] = new Point(p.getX() - 1, p.getY() - 1);
+        pts[5] = new Point(p.getX() + 1, p.getY() - 1);
+        pts[6] = new Point(p.getX() - 1, p.getY() + 1);
+        pts[7] = new Point(p.getX() + 1, p.getY() + 1);
+
+        for (Point pt : pts) {
+            if (Field.isValidPoint(pt)) {
+                if (this.destroyedShips[pt.getX()][pt.getY()])
+                    return true;
+            }
+        }
+        return false;
+    }
 
     public void placeShip(GameHandler handler) {
         Field aiField = this.field;
@@ -147,7 +203,7 @@ public class AIPlayer extends Player {
     
     public void makeTurn(GameHandler handler) {
         Point target = calcTurnCoord();
-        System.out.println("Firing at " + target.toBSString());
+        debug("Firing at " + target.toBSString());
 
         FireState fs = handler.getGame().getOtherPlayer(this).getField().evalTurn(target);
         this.fires[target.getX()][target.getY()] = true;
@@ -156,21 +212,32 @@ public class AIPlayer extends Player {
 
         if (!fs.equals(FireState.NOHIT)) {
             this.hits[target.getX()][target.getY()] = true;
-            
+            debug("We hit " + target.toBSString());
 
             if (this.mode == "search") {
                 this.lastHitCoord = target;
                 this.firstHitCoord = target;
                 this.mode = "search2nd";
+                debug("Switch to SEARCH2nd");
             } else if (this.mode == "search2nd") {
                 this.destroyDirX = target.getX() - this.lastHitCoord.getX();
                 this.destroyDirY = target.getY() - this.lastHitCoord.getY();
                 this.mode = "destroy";
+                debug("Switch to DESTROY");
             }
+            
+            // Register as Hit for current Ship
+            this.currentShip.add(target);
             
             if (fs.equals(FireState.FULLHIT)) {
                 this.mode = "search";
-                //return;
+                debug("FULL HIT, Switching to SEARCH");
+                
+                // Register full hit
+                for(Point p : this.currentShip) {
+                    this.destroyedShips[p.getX()][p.getY()] = true;
+                }
+                this.currentShip.clear();
             }
             this.wasLastHit = true;
             
